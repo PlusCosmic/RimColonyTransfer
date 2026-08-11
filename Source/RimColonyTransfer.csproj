@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 1.6's Assembly-CSharp is built against netstandard2.1; 2.0 fails with CS1705. -->
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>RimColonyTransfer</AssemblyName>
+    <RootNamespace>RimColonyTransfer</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\Assemblies\</OutputPath>
+    <DebugType>none</DebugType>
+    <!-- RimWorld loads the DLL directly; a deps.json would just ship as dead weight. -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <!-- The game supplies every reference at runtime; never copy them into Assemblies/. -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- MSB3277: Unity ships many module DLLs claiming the same UnityEngine identity. Harmless. -->
+    <NoWarn>$(NoWarn);MSB3277</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RimWorldManaged>/mnt/big-disk/SteamLibrary/steamapps/common/RimWorld/RimWorldLinux_Data/Managed</RimWorldManaged>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldManaged)/Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(RimWorldManaged)/UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RimWorldManaged)/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(RimWorldManaged)/UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(RimWorldManaged)/UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

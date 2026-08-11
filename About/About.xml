@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>pluscosmic.rimcolonytransfer</packageId>
+  <name>Rim Colony Transfer</name>
+  <author>Harry Leach</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>Move an established colony into a brand-new world. Exports your colonists, their buildings and the settings that make the base work into an exchange file, then rebuilds it all on a fresh map in another save.
+
+Buildings travel as Sketches — the same system the game uses for monument quests — so they carry no load IDs and cannot collide with anything in the destination save. Complexes are detected and placed independently, so a base split across a river doesn't need matching terrain to land on.
+
+Both saves must run the same mod list; defs resolve by name.</description>
+</ModMetaData>
